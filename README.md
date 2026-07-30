@@ -74,6 +74,10 @@ Screenshots from the running system, accessible over HTTPS at a custom domain.
 
 ## 3. Architecture
 
+The whole system runs on a single VM: a Docker container hosting OpenWebUI behind an NGINX reverse proxy, with every LLM call routed through OpenRouter. The diagram below shows the complete flow end-to-end — from the browser, through DNS, the reverse proxy, the container, and out to the LLM providers.
+
+![General architecture — browser → DNS → NGINX → OpenWebUI → OpenRouter → LLM providers](./assets/chatbot-architecture.png)
+
 ### 3.1 AI integration
 
 The system uses OpenRouter as the single gateway to multiple LLM providers. OpenWebUI sends one authenticated REST call; OpenRouter routes it to whichever model is selected in the UI.
